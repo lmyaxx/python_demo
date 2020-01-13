@@ -2,6 +2,8 @@ import pyhdfs
 
 
 class HdfsHelper(object):
+
+    # host="X.X.X.X,port"
     def __init__(self, host):
         self.fs = pyhdfs.HdfsClient(host)
         print("successfully obtain hdfs client")

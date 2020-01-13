@@ -3,6 +3,12 @@ import os
 import zipfile
 
 
+# 若不存在文件夹则创建文件夹
+def create_directory_if_not_exist(directory):
+    if not os.path.exists(directory):
+        os.mkdir(directory)
+
+
 # 默认文件的母目录必须存在
 # 文件存在则删除，然后新创建文件存储数据
 def store_data_to_file(data, file_path):
@@ -10,12 +16,6 @@ def store_data_to_file(data, file_path):
         os.remove(file_path)
     with open(file_path, "w") as fd:
         json.dump(data, fd)
-
-
-# 若不存在文件夹则创建文件夹
-def create_directory_if_not_exist(directory):
-    if not os.path.exists(directory):
-        os.mkdir(directory)
 
 
 # 默认path有效
@@ -34,7 +34,7 @@ def remove_dir_or_file(path):
         os.removedirs(path)
 
 
-# 压缩文件
+# 压缩文件为zip，目标文件名称"xxx.zip"
 def compress_directory_by_zip(src_dir, dst_filename):
     # 如果已经有压缩过的文件, 则删除
     remove_dir_or_file(dst_filename)
